@@ -5,6 +5,17 @@
 // invert([]) == []
 // You can assume that all values are integers. Do not mutate the input array/list.
 
-function invert(array) {
-    return ;
+function invert(array) {  
+
+    result = array.map(item => item * -1)
+    return result
  }
+
+ function invertAndSum(array) {
+     let result = array.reduce((acc, item) => {
+        return (acc + (-1 * item))
+    })
+    return result
+ }
+
+ 
