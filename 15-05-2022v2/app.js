@@ -3,3 +3,20 @@
 // Examples
 // "This is an example!" ==> "sihT si na !elpmaxe"
 // "double  spaces"      ==> "elbuod  secaps"
+
+function reverseWords(str) {
+    let splitwords = str.split(' ')
+    console.log(splitwords)
+
+
+
+    let wordArray = splitwords.map(element => {
+        return element.split('').reverse().join('')
+        
+    })
+
+
+    return wordArray.join(' ')
+}
+
+console.log(reverseWords("This is an example!"))
