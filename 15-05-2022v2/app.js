@@ -20,3 +20,9 @@ function reverseWords(str) {
 }
 
 console.log(reverseWords("This is an example!"))
+
+// function reverseWords(str) {
+//     return str.split(' ').map(function(word){
+//       return word.split('').reverse().join('');
+//     }).join(' ');
+//   }
