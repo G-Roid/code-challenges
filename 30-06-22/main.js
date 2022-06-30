@@ -1,34 +1,34 @@
-// Character recognition software is widely used to digitise printed texts. Thus the texts can be edited, searched and stored on a computer.
+// Your task is to find the first element of an array that is not consecutive.
 
-// When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes.
+// By not consecutive we mean not exactly 1 larger than the previous element of the array.
 
-// Your task is correct the errors in the digitised text. You only have to handle the following mistakes:
+// E.g. If we have an array [1,2,3,4,6,7,8] then 1 then 2 then 3 then 4 are all consecutive but 6 is not, so that's the first non-consecutive number.
 
-// S is misinterpreted as 5
-// O is misinterpreted as 0
-// I is misinterpreted as 1
-// The test cases contain numbers only by mistake.
+// If the whole array is consecutive then return null2.
 
-// Tests
-    // assert.strictEqual(correct("L0ND0N"),"LONDON");
-    // assert.strictEqual(correct("DUBL1N"),"DUBLIN");
-    // assert.strictEqual(correct("51NGAP0RE"),"SINGAPORE");
-    // assert.strictEqual(correct("BUDAPE5T"),"BUDAPEST");
-    // assert.strictEqual(correct("PAR15"),"PARIS");
+// The array will always have at least 2 elements1 and all elements will be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive or negative and the first non-consecutive could be either too!
 
-    function correct(string)
-    {
-        let result = ''
-        for(let i = 0; i < string.length; i++) {
-            if(string[i] == '5' || string[i] == '0' || string[i] == '1') {
-                if(string[i] === '5') result += 'S';
-                if(string[i] === '0') result += 'O';
-                if(string[i] === '1') result += 'I';
-            }
-            else {
-                result += string[i]
-            }
+// If you like this Kata, maybe try this one next: https://www.codewars.com/kata/represent-array-of-numbers-as-ranges
+
+// 1 Can you write a solution that will return null2 for both [] and [ x ] though? (This is an empty array and one with a single number and is not tested for, but you can write your own example test. )
+
+// 2
+// Swift, Ruby and Crystal: nil
+// Haskell: Nothing
+// Python, Rust, Scala: None
+// Julia: nothing
+// Nim: none(int) (See options)
+
+function firstNonConsecutive (arr) {
+
+    // const first = firstNonConsecutive([1,2,3,4,6,7,8])
+    // assert.strictEqual(first, 6)
+
+    let currentValue = Number(arr[0])
+
+    arr.forEach((element) => {
+        if (Number(element) + 1 == currentValue + 1) {
+            currentValue++
         }
-        return result
-    
-    }
+    })
+}
