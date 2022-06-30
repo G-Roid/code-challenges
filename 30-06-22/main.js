@@ -31,11 +31,11 @@ function firstNonConsecutive (arr) {
             if (Number(element) + 1 == currentValue + 1) {
                 currentValue++
             } else {
-                return currentValue
+                currentValue
             }
         } else {
             return null
         }
-
     })
+    return Number(element) + 1
 }
