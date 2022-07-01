@@ -26,16 +26,12 @@ function firstNonConsecutive (arr) {
 
     let currentValue = Number(arr[0])
 
-    arr.forEach((element) => {
-        if(Number(element) + 1) {
-            if (Number(element) + 1 == currentValue + 1) {
-                currentValue++
-            } else {
-                currentValue
-            }
-        } else {
-            return null
+    
+    for(let i = 0; i < arr.length; i++) {
+
+        if (currentValue + 1 == Number(arr[i + 1])) {
+            return Number(arr[i + 1])
         }
-    })
-    return Number(element) + 1
+
+    }
 }
