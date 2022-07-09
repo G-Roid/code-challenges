@@ -8,7 +8,7 @@ const quarterOf = (month) => {
     case (month > 3 && month < 7): return 2
     case (month > 6 && month < 10): return 3
     case (month > 9): return 4
-    
   } 
+
   
 }
