@@ -1,0 +1,13 @@
+header {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    top: 0;
+
+}
+
+main {
+    color: red;
+    position: relative;
+    margin-top: 30px;
+}
