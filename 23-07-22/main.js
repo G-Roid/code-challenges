@@ -23,6 +23,9 @@ function roundToFive(n) {
     while (!currentValue % 5 === 0) {
         currentValue++
     } 
-    return currentValue
+    return currentValue;
 }
+
+
+console.log(roundToFive(2))
 
