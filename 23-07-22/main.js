@@ -18,12 +18,14 @@
 
 
 function roundToFive(n) {
-    let currentValue = n
+    let currentValue = Number(n)
 
-    while (!currentValue % 5 === 0) {
+    console.log(currentValue)
+
+    while(currentValue % 5 !== 0) {
         currentValue++
-    } 
-    return currentValue;
+    }
+    return currentValue
 }
 
 
