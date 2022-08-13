@@ -7,6 +7,7 @@
 
 
 
+
 function getIndexToIns(arr, num) {
     let sort = arr.sort((a, b) => {
       return a - b
@@ -14,8 +15,11 @@ function getIndexToIns(arr, num) {
   
   let index = 0
     for(let i = 0; i < sort.length; i++) {
-      if(sort[i] > num) {
-        index = i - 1 
+      if(sort[i] >= num) {
+        index = i
+        break
+      } else if(sort[i] < num && i === sort.length - 1) {
+        index = i + 1
         break
       }
     }
@@ -23,6 +27,5 @@ function getIndexToIns(arr, num) {
     return index
   
   }
-  
   console.log(getIndexToIns([40, 60], 50))
   console.log(getIndexToIns([10, 20, 30, 40, 50], 35))
