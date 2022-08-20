@@ -1,32 +1,20 @@
-// Task:
-// Your task is to write a function which returns the sum of following series upto nth term(parameter).
+// The global variable
+const s = [23, 65, 98, 5];
 
-// Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
-// Rules:
-// You need to round the answer to 2 decimal places and return it as String.
+Array.prototype.myFilter = function(callback) {
+  // Only change code below this line
+  const newArray = [];
+  for(let i = 0; i < this.length;i++) {
+    if(callback(this[i])) {
+      newArray.push(this[i])
 
-// If the given value is 0 then it should return 0.00
-
-// You will only be given Natural Numbers as arguments.
-
-// Examples:(Input --> Output)
-// 1 --> 1 --> "1.00"
-// 2 --> 1 + 1/4 --> "1.25"
-// 5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
-
-
-function sumOfSeries(n) {
-    let result = 0
-    let a = 1
-    let r = 0.25
-
-    for (let i = 0; i < n; i++) {
-        a = a + i * r
     }
+    
+  }
+  // Only change code above this line
+  return newArray;
+};
 
-    return a
-}
-
-console.log(sumOfSeries(1))
-console.log(sumOfSeries(2))
-console.log(sumOfSeries(3))
+const new_s = s.myFilter(function(item) {
+  return item % 2 === 1;
+});
