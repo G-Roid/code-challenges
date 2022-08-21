@@ -1,20 +1,12 @@
-// The global variable
-const s = [23, 65, 98, 5];
+// Use the join method (among others) inside the sentensify function to make a sentence from the words in the string str. The function should return a string. For example, I-like-Star-Wars would be converted to I like Star Wars. For this challenge, do not use the replace method.
 
-Array.prototype.myFilter = function(callback) {
+
+function sentensify(str) {
   // Only change code below this line
-  const newArray = [];
-  for(let i = 0; i < this.length;i++) {
-    if(callback(this[i])) {
-      newArray.push(this[i])
+  return str.split('-').join(' ')
 
-    }
-    
-  }
   // Only change code above this line
-  return newArray;
-};
+}
 
-const new_s = s.myFilter(function(item) {
-  return item % 2 === 1;
-});
+console.log(sentensify("May-the-force-be-with-you"))
+sentensify("May-the-force-be-with-you");
