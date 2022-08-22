@@ -1,40 +1,28 @@
-// Sum All Numbers in a Range
-// We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+// You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
 
-// For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+// Note: You have to use the arguments object.
 
-function sumAll(arr) {
-  //sort the numbers
-  let sortedArray = arr.sort((a, b) => {
-    return a - b
-  })
-
-  // let sum = sortedArray.reduce((previous, current) => {
-  //   return previous + current
-  // })
-
-  let between = 0
-  for(let i = sortedArray[0]; i <= sortedArray[1]; i++) {
-    between += i
+function destroyer(arr) {
+  const duplicateRemoved = []
+  for(let i = 0; i < arr.length; i++) {
+    if(!duplicateRemoved.includes(arr[i])) {
+      duplicateRemoved.push(arr[i])
+    }
   }
 
-  // console.log(sortedArray)
-  // console.log(sum)
-  // console.log(between)
-  return between
+  let result = arr.slice()
+  // console.log(result)
 
-}
-// console.log(sumAll([1, 4]))
-sumAll([1, 4]);
-
-function refined(arr) {
-  let min = Math.min(arr[0], arr[1])
-  let max = Math.max(arr[0], arr[1])
-
-  let result = 0;
-  for(let i = min; i <= max; i++) {
-    result += i
-  }
+  for(let i = 1; i < arguments.length; i++) {
+      if(result.indexOf(arguments[i]) != -1) {
+        result.splice(result.indexOf(arguments[i]), 1)
+      }
+    }
+  // console.log(result)
   return result
 }
 
+
+console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3))
+console.log(destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3))
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
