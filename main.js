@@ -1,28 +1,27 @@
-// You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
+// JavaScript Algorithms and Data Structures
+// Intermediate Algorithm Scripting
+// Wherefore art thou
+// Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching name and value pairs (second argument). Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
 
-// Note: You have to use the arguments object.
+// For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the name and its value, that was passed on as the second argument.
 
-function destroyer(arr) {
-  const duplicateRemoved = []
-  for(let i = 0; i < arr.length; i++) {
-    if(!duplicateRemoved.includes(arr[i])) {
-      duplicateRemoved.push(arr[i])
+function whatIsInAName(collection, source) {
+  const arr = [];
+  // Only change code below this line
+    const sourceKeys = Object.keys(source)
+    const collectionKeys = Object.keys(collection)
+    // console.log(collectionKeys)
+ 
+    for(let i = 0; i < sourceKeys.length; i++) {
+        for(let j = 0; j < collection.length; j++) {
+          // console.log(collection[j])
+          if(collection[j][sourceKeys[i]] == source[sourceKeys[i]]) {
+            arr.push(collection[j])
+          }
+        }
     }
-  }
-
-  let result = arr.slice()
-  // console.log(result)
-
-  for(let i = 1; i < arguments.length; i++) {
-      if(result.indexOf(arguments[i]) != -1) {
-        result.splice(result.indexOf(arguments[i]), 1)
-      }
-    }
-  // console.log(result)
-  return result
+  // Only change code above this line
+  return arr;
 }
 
-
-console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3))
-console.log(destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3))
-destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
