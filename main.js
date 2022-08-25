@@ -1,44 +1,39 @@
-function spinalCase(str) {
-    let result = str.split(/\W/)
-    if(result.length === 1) {
-      result = result[0].split('_')
-    }
-  
-    let checkCamalCase = []
-  
-  
-    result.forEach(element => {
-      checkCamalCase.push(mySplit(element).map(el => {
-        return el.toLowerCase()
-      }))
-    })
-  
-    //combine arrays
-    let joined = []
-  
-    for(let i = 0; i < checkCamalCase.length; i++) {
-      for(let j = 0; j < checkCamalCase[i].length; j++) {
-        joined.push(checkCamalCase[i][j])
-      }
-    }
-    return joined.join('-')
-  }
-  
-  
-  function mySplit(str) {
-      let result = str[0]
-  
-      for(let i = 1; i < str.length; i++) {
-         
-          if(str.charCodeAt(i) >= 97 && str.charCodeAt(0) <= 122) {
-              result += str[i]
-          } else {
-              result +=  " " + str[i].toLowerCase()
-          }
-      }
-      return (result.split(' '))
-  }
-  
-  console.log(spinalCase('This Is Spinal Tap'));
-  spinalCase("AllThe-small Things");
-  spinalCase("The_Andy_Griffith_Show");
+//Length of a string
+let myString = ' chocolate '
+console.log(`Original String: ${myString} => length: ${myString.length}`)
+console.log(myString.length)
+
+//Remove white space
+console.log(myString.trim())
+console.log(`After Trim: ${myString} => Length: ${myString.length}`)
+
+//Check for substring
+console.log(myString.includes('late'))
+console.log(myString.indexOf('late'))
+
+
+//Replace a substring with new values
+console.log(myString.replace('cho', 'poc'))
+
+
+// Non destructive copy of a string
+let slicedString = myString.slice(0, 6)
+console.log(slicedString)
+
+// Returns an array based on split
+
+let str = 'a,b,c,d,e'
+console.log(str.split(','))
+
+// Repeate a string multiple times
+console.log(str.repeat(4))
+
+//Return a char at an index
+console.log(myString.charAt(6))
+
+// Return the ASCII Code for a character
+console.log(myString.charCodeAt(myString.indexOf('a')))
+
+//What does concat do?
+const mars = myString.concat(' bars').trim()
+console.log(mars)
