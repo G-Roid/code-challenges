@@ -1,27 +1,44 @@
-// JavaScript Algorithms and Data Structures
-// Intermediate Algorithm Scripting
-// Wherefore art thou
-// Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching name and value pairs (second argument). Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
-
-// For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the name and its value, that was passed on as the second argument.
-
-function whatIsInAName(collection, source) {
-  const arr = [];
-  // Only change code below this line
-    const sourceKeys = Object.keys(source)
-    const collectionKeys = Object.keys(collection)
-    // console.log(collectionKeys)
- 
-    for(let i = 0; i < sourceKeys.length; i++) {
-        for(let j = 0; j < collection.length; j++) {
-          // console.log(collection[j])
-          if(collection[j][sourceKeys[i]] == source[sourceKeys[i]]) {
-            arr.push(collection[j])
-          }
-        }
+function spinalCase(str) {
+    let result = str.split(/\W/)
+    if(result.length === 1) {
+      result = result[0].split('_')
     }
-  // Only change code above this line
-  return arr;
-}
-
-whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+  
+    let checkCamalCase = []
+  
+  
+    result.forEach(element => {
+      checkCamalCase.push(mySplit(element).map(el => {
+        return el.toLowerCase()
+      }))
+    })
+  
+    //combine arrays
+    let joined = []
+  
+    for(let i = 0; i < checkCamalCase.length; i++) {
+      for(let j = 0; j < checkCamalCase[i].length; j++) {
+        joined.push(checkCamalCase[i][j])
+      }
+    }
+    return joined.join('-')
+  }
+  
+  
+  function mySplit(str) {
+      let result = str[0]
+  
+      for(let i = 1; i < str.length; i++) {
+         
+          if(str.charCodeAt(i) >= 97 && str.charCodeAt(0) <= 122) {
+              result += str[i]
+          } else {
+              result +=  " " + str[i].toLowerCase()
+          }
+      }
+      return (result.split(' '))
+  }
+  
+  console.log(spinalCase('This Is Spinal Tap'));
+  spinalCase("AllThe-small Things");
+  spinalCase("The_Andy_Griffith_Show");
