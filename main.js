@@ -1,39 +1,50 @@
-//Length of a string
-let myString = ' chocolate '
-console.log(`Original String: ${myString} => length: ${myString.length}`)
-console.log(myString.length)
+console.log('hello')
 
-//Remove white space
-console.log(myString.trim())
-console.log(`After Trim: ${myString} => Length: ${myString.length}`)
+// JavaScript Algorithms and Data Structures
+// Intermediate Algorithm Scripting
+// Pig Latin
+// Pig Latin is a way of altering English Words. The rules are as follows:
 
-//Check for substring
-console.log(myString.includes('late'))
-console.log(myString.indexOf('late'))
+// - If a word begins with a consonant, take the first consonant or consonant cluster, move it to the end of the word, and add ay to it.
+
+// - If a word begins with a vowel, just add way at the end.
+
+// Translate the provided string to Pig Latin. Input strings are guaranteed to be English words in all lowercase.
+
+function translatePigLatin(str) {
+    return consonantStart(str)
+}
+
+console.log(translatePigLatin("consonant"));
+console.log(translatePigLatin("california"));
+
+function consonantStart(input) {
+    let vowels = ['a', 'e', 'i', 'o', 'u']
+    let result = []
+    let consonantPattern = ''
+
+    if(vowels.includes(input[0])) {
+        result = input + 'way'
+    } else {
+        for(let i = 0; i < input.length; i++) {
+            if(!vowels.includes(input[i].toLowerCase())) {
+                consonantPattern += input[i]
+                if(consonantPattern.length === input.length) {
+                    result = consonantPattern + 'ay'
+                    return result
+                }
+            } else {
+               let newEnding = input.slice(0, i)
+              //  console.log(newEnding)
+               result = input.slice(i) + newEnding + 'ay'
+               break
+            }
+        }
+    }
+    
+    return result
+
+}
 
 
-//Replace a substring with new values
-console.log(myString.replace('cho', 'poc'))
-
-
-// Non destructive copy of a string
-let slicedString = myString.slice(0, 6)
-console.log(slicedString)
-
-// Returns an array based on split
-
-let str = 'a,b,c,d,e'
-console.log(str.split(','))
-
-// Repeate a string multiple times
-console.log(str.repeat(4))
-
-//Return a char at an index
-console.log(myString.charAt(6))
-
-// Return the ASCII Code for a character
-console.log(myString.charCodeAt(myString.indexOf('a')))
-
-//What does concat do?
-const mars = myString.concat(' bars').trim()
-console.log(mars)
+// console.log(translatePigLatin("california")) //should return the string aliforniacay.
