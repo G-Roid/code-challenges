@@ -1,38 +1,53 @@
-// JavaScript Algorithms and Data Structures
-// Intermediate Algorithm Scripting
-// Missing letters
-// Find the missing letter in the passed letter range and return it.
+// Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
 
-// If all letters are present in the range, return undefined.
+// In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
 
-function fearNotLetter(str) {
-  const alphStr = "abcdefghijklmnopqrstuvwxyz";
-  const alphaArray = alphStr.split('');
-  // console.log(alphaArray)
-  // console.log(alphaArray.indexOf('c'))
+// The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
 
-  let startIndex = alphaArray.indexOf(str[0]);
-  let alphaSubArray = alphaArray.slice(startIndex, startIndex + str.length)
+// Check the assertion tests for examples.
+
+// Tests
+// Waiting:uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]) should return [1, 3, 2, 5, 4].
+// Waiting:uniteUnique([1, 2, 3], [5, 2, 1]) should return [1, 2, 3, 5].
+// Waiting:uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]) should return [1, 2, 3, 5, 4, 6, 7, 8].
+// Waiting:uniteUnique([1, 3, 2], [5, 4], [5, 6]) should return [1, 3, 2, 5, 4, 6].
+// Waiting:uniteUnique([1, 3, 2, 3], [5, 2, 1, 4], [2, 1]) should return [1, 3, 2, 5, 4].
+
+function uniteUnique(arr) {
+  let result = []
+  for(let i = 1; i < arguments.length - 1; i++) {
+      result.push(onlyUnique(arguments[i], arguments[i + 1]))
+  }
+
+  let joinedArr = [];
+  result.forEach(el => {
+    for(let i = 0; i < el.length; i++) {
+      joinedArr.push(el[i])
+    }
+  })
+
+  let firstArrSet = new Set(arguments[0]);
+
+  let finalArray = Array.from(firstArrSet).concat(joinedArr)
   
-  console.log(`Position: ${startIndex}`)
-  console.log(alphaSubArray)
-
-  return missingOne(str, alphaSubArray)
-
+  // console.log(result)
+  // console.log(firstArrSet)
+  // console.log(finalArray)
+  return finalArray;
 }
 
-function missingOne(str, comp) {
-  let result = undefined;
-  for(let i = 0; i < comp.length; i++) {
-    if(!str.includes(comp[i])) {
-      result = comp[i];
-      break;
+
+
+function onlyUnique(arr1, arr2) {
+  let result = []
+
+  for(let i = 0; i < arr1.length; i++) {
+    if(!arr2.includes(arr1[i])) {
+      result.push(arr1[i])
     }
   }
-  return result;
+  return result
 }
 
-// console.log(fearNotLetter("abce"));
-// console.log(fearNotLetter("abcdefghjklmno"))
-// console.log(fearNotLetter("abcdefghijklmnopqrstuvwxyz"));
-console.log(fearNotLetter("stvwx"))
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+console.log(uniteUnique([1, 2, 3], [5, 2, 1]));
