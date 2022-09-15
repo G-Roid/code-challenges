@@ -1,53 +1,40 @@
-// Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+// Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
 
-// In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+// The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
 
-// The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+// For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
 
-// Check the assertion tests for examples.
-
-// Tests
-// Waiting:uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]) should return [1, 3, 2, 5, 4].
-// Waiting:uniteUnique([1, 2, 3], [5, 2, 1]) should return [1, 2, 3, 5].
-// Waiting:uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]) should return [1, 2, 3, 5, 4, 6, 7, 8].
-// Waiting:uniteUnique([1, 3, 2], [5, 4], [5, 6]) should return [1, 3, 2, 5, 4, 6].
-// Waiting:uniteUnique([1, 3, 2, 3], [5, 2, 1, 4], [2, 1]) should return [1, 3, 2, 5, 4].
-
-function uniteUnique(arr) {
-  let result = []
-  for(let i = 1; i < arguments.length - 1; i++) {
-      result.push(onlyUnique(arguments[i], arguments[i + 1]))
-  }
-
-  let joinedArr = [];
-  result.forEach(el => {
-    for(let i = 0; i < el.length; i++) {
-      joinedArr.push(el[i])
-    }
+function sumFibs(num) {
+  let fibNumbers = fibSequence(1000)  
+  let result = fibNumbers.filter(el => {
+    return (el <= num && el % 2 != 0)
   })
 
-  let firstArrSet = new Set(arguments[0]);
-
-  let finalArray = Array.from(firstArrSet).concat(joinedArr)
   
-  // console.log(result)
-  // console.log(firstArrSet)
-  // console.log(finalArray)
-  return finalArray;
+
+  return result.reduce((a, b) => {
+    return a + b
+  }, 0)
+  
 }
 
+function fibSequence(n) {
+  let numbers = [1, 1]
+  if(n == 1) {
+    return [1];
+  } else if(n == 2) {
+    return [1, 1]
+  } else {
+    
+    let cycles = n - 2
 
-
-function onlyUnique(arr1, arr2) {
-  let result = []
-
-  for(let i = 0; i < arr1.length; i++) {
-    if(!arr2.includes(arr1[i])) {
-      result.push(arr1[i])
+    for(let i = 0; i < cycles; i++) {
+      let newValue = numbers[numbers.length - 1] + numbers[numbers.length - 2];
+      numbers.push(newValue);
     }
+    return numbers;
   }
-  return result
 }
 
-uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
-console.log(uniteUnique([1, 2, 3], [5, 2, 1]));
+
+console.log(sumFibs(10))
